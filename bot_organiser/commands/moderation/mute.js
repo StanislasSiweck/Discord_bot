@@ -28,7 +28,7 @@ module.exports.run = async (client,message,args) => {
     message.channel.send(`<@${user.id}> est muté pendant ${ms(ms(muteTime))}.`);
     const embed = new MessageEmbed()
     .setAuthor(`${user.user.username} (${user.user.id})`)
-    .setColor("#ffa500")
+    .setColor("#287db5")
     .setDescription(`**Action**: Mute\n**Temps**: ${ms(ms(muteTime))}`)
     .setThumbnail(user.user.displayAvatarURL())
     .setTimestamp()

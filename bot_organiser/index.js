@@ -1,5 +1,5 @@
 const {Client, Collection} = require('discord.js');
-const {TOKEN,PREFIX} = require('./config');
+const {TOKEN} = require('./config');
 const {readdirSync} = require("fs");
 
 const client = new Client();
