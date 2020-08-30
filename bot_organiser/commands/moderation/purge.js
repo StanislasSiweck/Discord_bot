@@ -1,4 +1,5 @@
 const {MessageEmbed} = require("discord.js");
+const {CHANNEL} = require('../../config');
 
 module.exports.run = async (client,message,args) => {
     if(isNaN(args[0]) || (args[0] < 1 || args[0] > 100)) return message.reply(`Il faut spécifier un **nombre** entre 1 et 100!`);
@@ -15,7 +16,7 @@ module.exports.run = async (client,message,args) => {
     .setColor("#287db5")
     .setDescription(`**Action**: Purge\n **Nbr de message**: ${args[0]}\n**Salon**: ${message.channel}`) 
 
-    client.channels.cache.get('727170696773500988').send(embed);
+    client.channels.cache.get(CHANNEL).send(embed);
 
 };
 

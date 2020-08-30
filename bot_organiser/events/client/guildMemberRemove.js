@@ -1,4 +1,5 @@
 const {MessageEmbed} = require("discord.js");
+const {CHANNEL} = require('../../config');
 
 module.exports = (client, memeber) => {
     const embed = new MessageEmbed()
@@ -7,5 +8,5 @@ module.exports = (client, memeber) => {
     .setFooter("Un utilisateur a quitté")
     .setTimestamp();
 
-    client.channels.cache.get('727170696773500988').send(embed);
+    client.channels.cache.get(CHANNEL).send(embed);
 }

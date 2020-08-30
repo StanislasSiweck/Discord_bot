@@ -1,4 +1,5 @@
 const {MessageEmbed} = require("discord.js");
+const {CHANNEL} = require('../../config');
 
 module.exports.run = async (client,message,args) => {
     let user = message.guild.member(message.mentions.users.first());
@@ -23,7 +24,7 @@ module.exports.run = async (client,message,args) => {
     .setColor("#287db5")
     .setDescription(`**Action**: Prune\n **Nbr de message**: ${args[1]}\n**User**: ${args[0]}`) 
 
-    client.channels.cache.get('727170696773500988').send(embed);
+    client.channels.cache.get(CHANNEL).send(embed);
 
 };
 

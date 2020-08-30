@@ -1,4 +1,5 @@
 const {MessageEmbed} = require("discord.js");
+const {CHANNEL} = require('../../config');
 
 module.exports.run = (client,message,args) => {
     const raison = args.splice(1).join(" ") || 'Aucune raison spécifiée';
@@ -14,7 +15,7 @@ module.exports.run = (client,message,args) => {
     .setTimestamp()
     .setFooter(message.author.username, message.author.avatarURL());
 
-    client.channels.cache.get('727170696773500988').send(embed);
+    client.channels.cache.get(CHANNEL).send(embed);
 };
 
 module.exports.help = {    

@@ -1,4 +1,5 @@
 const {MessageEmbed} = require("discord.js");
+const {CHANNEL} = require('../../config');
 
 module.exports.run = (client,message,args) => {
     let user = message.guild.member(message.mentions.users.first());
@@ -17,7 +18,7 @@ module.exports.run = (client,message,args) => {
     .setTimestamp()
     .setFooter("Par :"+message.author.username, message.author.displayAvatarURL());
 
-    client.channels.cache.get('727170696773500988').send(embed);
+    client.channels.cache.get(CHANNEL).send(embed);
 
 };
 
