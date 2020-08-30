@@ -4,7 +4,7 @@ const {PREFIX} = require('../../config');
 module.exports = (client,message) => {
 
     //vérification
-
+    if (message.channel.type === "dm") return client.emit("directMessage",message);
     if(!message.content.startsWith(PREFIX) || message.author.bot) return; // si pas prefix ou bot return
 
     const args = message.content.slice(PREFIX.length).split(/ +/); //retire le prefix et la commande (?userinfo)
