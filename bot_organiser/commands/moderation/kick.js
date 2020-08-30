@@ -1,5 +1,6 @@
 const {MessageEmbed} = require("discord.js");
 const {CHANNEL} = require('../../config');
+const {MESSAGES} = require("../../util/constants");
 
 module.exports.run = (client,message,args) => {
     const raison = args.splice(1).join(" ") || 'Aucune raison spécifiée';
@@ -18,14 +19,4 @@ module.exports.run = (client,message,args) => {
         client.channels.cache.get(CHANNEL).send(embed);
 };
 
-module.exports.help = {    
-name : 'kick',
-aliases:["kick"],
-category: 'moderation',
-description : 'Permet de kick une peronne',
-cooldown: 0,
-usage: '<@user> <raison>',
-isUserAdmin: true,
-permissions: true,
-args: true,
-}
+module.exports.help = MESSAGES.COMMANDS.MODERATION.KICK;

@@ -1,7 +1,7 @@
 const {Collection} = require('discord.js');
 const {PREFIX} = require('../../config');
 
-module.exports = (client,message) => {
+module.exports = (client,message) => { // appeller quand le bot recoie un message
 
     //vérification
     if (message.channel.type === "dm") return client.emit("directMessage",message);

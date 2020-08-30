@@ -1,15 +1,7 @@
+const {MESSAGES} = require("../../util/constants")
+
 module.exports.run = (client,message,args) => {
         message.channel.send("Pong");
 };
 
-module.exports.help = {    
-    name : 'ping',
-    aliases:["p"],
-    category: 'misc',
-    description : 'pong',
-    cooldown: 10,
-    usage: '',
-    isUserAdmin: false,
-    permissions: true,
-    args: false,
-}
+module.exports.help = MESSAGES.COMMANDS.MISC.PING;

@@ -1,5 +1,6 @@
 const {MessageEmbed} = require("discord.js");
 const {CHANNEL} = require('../../config');
+const {MESSAGES} = require("../../util/constants");
 
 module.exports.run = async (client,message,args) => {
     let user = message.guild.member(message.mentions.users.first());
@@ -28,14 +29,4 @@ module.exports.run = async (client,message,args) => {
 
 };
 
-module.exports.help = {    
-name : 'prune',
-aliases:["prune"],
-category: 'moderation',
-description : "Permet de prune les message d'un user",
-cooldown: 0,
-usage: '<nbr_message>',
-isUserAdmin: false,
-permissions: true,
-args: true,
-}
+module.exports.help = MESSAGES.COMMANDS.MODERATION.PRUNE;

@@ -2,11 +2,12 @@ const { MessageEmbed } = require("discord.js");
 const { PREFIX } = require("../../config");
 const {readdirSync} = require("fs");
 const catagoryList = readdirSync("./commands");
+const {MESSAGES} = require("../../util/constants")
 
 module.exports.run = (client,message,args) => {
     if(!args.length){
         const embed = new MessageEmbed()
-        .setColor('#36393F')
+        .setColor('#1db512')
         .addField("Liste des commandes",`Une liste de touts les sous-catégories disponibles et commandes\nPour plus d'info sur une commande,taper\`${PREFIX}help <command_name>\``)
 
         for(const category of catagoryList){
@@ -21,10 +22,12 @@ module.exports.run = (client,message,args) => {
         if(!command) return message.reply("Cette commande n'existe pas!");
 
         const embed = new MessageEmbed()
-        .setColor('#36393F')
+        .setColor('#1db512')
         .setTitle(`\`${command.help.name}\``)
         .addField("Description", `${command.help.description} (cd: ${command.help.cooldown} secs)`)
         .addField("Utilisation", command.help.usage ? `${PREFIX}${command.help.name} ${command.help.usage}` : `${PREFIX}${command.help.name}`, true)
+        .addField("Utilisable sur les admin", command.help.isUserAdmin ? `Non` : `Oui`)
+        .addField("Besoin des permissions", command.help.permissions ? `Oui` : `Non`)
 
         if(command.help.aliases.length > 1) embed.addField("Alias", `${command.help.aliases.join(', ')}`, true);
 
@@ -32,14 +35,4 @@ module.exports.run = (client,message,args) => {
     }
 };
 
-module.exports.help = {    
-    name : 'help',
-    aliases: ["help"],
-    category: 'misc',
-    description : "Renvoie une liste de commande ou les info d'une commande",
-    usage: "<commande_name>",
-    cooldown: 2,
-    isUserAdmin: false,
-    permissions: false,
-    args: false
-}
+module.exports.help = MESSAGES.COMMANDS.MISC.HELP;

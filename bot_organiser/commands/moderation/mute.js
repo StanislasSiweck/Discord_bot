@@ -1,6 +1,7 @@
 const {MessageEmbed} = require("discord.js");
 const ms = require("ms");
 const {CHANNEL} = require('../../config');
+const {MESSAGES} = require("../../util/constants");
 
 module.exports.run = async (client,message,args) => {
     let user = message.guild.member(message.mentions.users.first());
@@ -42,14 +43,4 @@ module.exports.run = async (client,message,args) => {
     }, ms(muteTime))
 };
 
-module.exports.help = {    
-name : 'mute',
-aliases:["mute","m"],
-category: 'moderation',
-description : 'Permet de mute une peronne',
-cooldown: 0,
-usage: '<@user> <time>',
-isUserAdmin: true,
-permissions: true,
-args: true,
-}
+module.exports.help = MESSAGES.COMMANDS.MODERATION.MUTE;

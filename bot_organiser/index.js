@@ -1,6 +1,6 @@
 const {Client, Collection} = require('discord.js');
+const {loadCommands,loadEvents} = require('./util/loader');
 const {TOKEN} = require('./config');
-const {readdirSync} = require("fs");
 
 const client = new Client();
 ["commands", "cooldowns"].forEach(x => client[x] = new Collection()) // client.commands = new Collection();
@@ -14,31 +14,7 @@ for(const file of commandFiles) { // boucle sur tout les ficher .js dans command
 }
 */
 
-const loadCommands = (dir = "./commands/") => { // aller chercher les ficher .js dans les sous dossier
-    readdirSync(dir).forEach(dirs => {
-        const commands = readdirSync(`${dir}/${dirs}`).filter(files => files.endsWith(".js"));
-
-        for(const file of commands){
-            const getFileName = require(`${dir}/${dirs}/${file}`);
-            client.commands.set(getFileName.help.name,getFileName);
-            console.log(`Commande chargée: ${getFileName.help.name}`);
-        };
-    });
-};
-
-const loadEvents = (dir = "./events/") => { // aller chercher les ficher .js dans les sous dossier
-    readdirSync(dir).forEach(dirs => {
-        const events = readdirSync(`${dir}/${dirs}`).filter(files => files.endsWith(".js"));
-        for(const event of events){
-            const evt = require(`${dir}/${dirs}/${event}`);
-            const evtName = event.split(".")[0];
-            client.on(evtName,evt.bind(null,client));
-            console.log(`Event chargée: ${evtName}`);
-        };
-    });
-};
-
-loadCommands();
-loadEvents();
+loadCommands(client);
+loadEvents(client);
 
 client.login(TOKEN);

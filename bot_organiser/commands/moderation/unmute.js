@@ -1,5 +1,6 @@
 const {MessageEmbed} = require("discord.js");
 const {CHANNEL} = require('../../config');
+const {MESSAGES} = require("../../util/constants");
 
 module.exports.run = (client,message,args) => {
     let user = message.guild.member(message.mentions.users.first());
@@ -22,14 +23,4 @@ module.exports.run = (client,message,args) => {
 
 };
 
-module.exports.help = {    
-name : 'unmute',
-aliases:["unmute","um"],
-category: 'moderation',
-description : 'Permet de unmute une peronne',
-cooldown: 0,
-usage: '<@user>',
-isUserAdmin: true,
-permissions: true,
-args: true,
-}
+module.exports.help = MESSAGES.COMMANDS.MODERATION.UNMUTE;

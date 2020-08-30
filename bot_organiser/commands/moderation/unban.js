@@ -1,5 +1,6 @@
 const {MessageEmbed} = require("discord.js");
 const {CHANNEL} = require('../../config');
+const {MESSAGES} = require("../../util/constants");
 
 module.exports.run = async (client,message,args) => {
     const user = await client.users.fetch(args[0]);
@@ -21,14 +22,4 @@ module.exports.run = async (client,message,args) => {
 
 };
 
-module.exports.help = {    
-name : 'unban',
-aliases:["unban","ub"],
-category: 'moderation',
-description : 'Permet de unmban une peronne',
-cooldown: 0,
-usage: '<user_id>',
-isUserAdmin: false,
-permissions: true,
-args: true,
-}
+module.exports.help = MESSAGES.COMMANDS.MODERATION.UNBAN;

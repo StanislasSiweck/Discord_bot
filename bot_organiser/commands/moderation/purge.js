@@ -1,5 +1,6 @@
 const {MessageEmbed} = require("discord.js");
 const {CHANNEL} = require('../../config');
+const {MESSAGES} = require("../../util/constants");
 
 module.exports.run = async (client,message,args) => {
     if(isNaN(args[0]) || (args[0] < 1 || args[0] > 100)) return message.reply(`Il faut spécifier un **nombre** entre 1 et 100!`);
@@ -20,14 +21,4 @@ module.exports.run = async (client,message,args) => {
 
 };
 
-module.exports.help = {    
-name : 'purge',
-aliases:["purge"],
-category: 'moderation',
-description : 'Permet de purger un nombre de message',
-cooldown: 0,
-usage: '<nbr_message>',
-isUserAdmin: false,
-permissions: true,
-args: true,
-}
+module.exports.help = MESSAGES.COMMANDS.MODERATION.PURGE;
